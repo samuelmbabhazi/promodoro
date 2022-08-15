@@ -6,7 +6,7 @@ export default class Timer extends Component {
     return (
       <div className="time">
         <span className="count-down" onClick={this.timer}>
-          {this.props.currentTime}
+          {this.props.currentTimeH}:{this.props.currentTimeM}
         </span>
         <span>{this.props.cycle}</span>
       </div>

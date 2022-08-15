@@ -1,16 +1,20 @@
 import React, { Component } from "react";
+
 import "./App.css";
 import Timer from "./components/Time";
 import IncreDecre from "./components/IncreDecre";
+import Play from "./components/play";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentTime: "25 : 00",
+      currentTimeH: 25,
+      currentTimeM: 60,
       cycle: "Session",
       sessionTime: 25,
       breakTime: 5,
+      t: 0,
     };
   }
   incrementSession = () => {
@@ -33,11 +37,26 @@ class App extends Component {
       breakTime: this.state.breakTime - 1,
     });
   };
+
+  start = () => {
+    this.setState({
+      currentTimeM:setInterval(() => {
+        this.state.currentTimeM - 1 
+      }, 1000),
+    });
+  };
+  
+
   render() {
     return (
       <div className="main">
         <h1>Promodoro</h1>
-        <Timer currentTime={this.state.currentTime} />
+        <Timer
+          currentTimeH={this.state.sessionTime}
+          currentTimeM={this.state.currentTimeM}
+        />
+
+        <Play start={this.start} />
         <IncreDecre
           sessionTime={this.state.sessionTime}
           breakTime={this.state.breakTime}
