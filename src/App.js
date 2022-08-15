@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "./App.css";
 import Timer from "./components/Time";
 import IncreDecre from "./components/IncreDecre";
@@ -14,18 +13,22 @@ class App extends Component {
       cycle: "Session",
       sessionTime: 25,
       breakTime: 5,
-      t: 0,
     };
   }
   incrementSession = () => {
     this.setState({
       sessionTime: this.state.sessionTime + 1,
+      currentTimeH: this.state.currentTimeH + 1,
     });
   };
   decrementSession = () => {
-    this.setState({
+    if (this.state.sessionTime>1) {
+      this.setState({
       sessionTime: this.state.sessionTime - 1,
+      currentTimeH: this.state.currentTimeH - 1,
     });
+    }
+  
   };
   incrementBreak = () => {
     this.setState({
@@ -39,24 +42,48 @@ class App extends Component {
   };
 
   start = () => {
+    setInterval(() => {
+      if (this.state.currentTimeH > 0) {
+        if (this.state.currentTimeM > 0) {
+          this.setState({
+            currentTimeM: this.state.currentTimeM - 1,
+          });
+        }
+
+        if (this.state.currentTimeM === 0) {
+          this.setState({
+            currentTimeH: this.state.currentTimeH - 1,
+            currentTimeM: this.state.currentTimeM + 60,
+          });
+        }
+        if (this.state.currentTimeH === 0) {
+          this.setState({
+            currentTimeM: this.state.currentTimeM - 60,
+          });
+        }
+      }
+    }, 100);
+    clearInterval();
+  };
+  initial = () => {
     this.setState({
-      currentTimeM:setInterval(() => {
-        this.state.currentTimeM - 1 
-      }, 1000),
+      currentTimeH: 25,
+      currentTimeM: 60,
+      sessionTime: 25,
+      breakTime: 5,
     });
   };
-  
 
   render() {
     return (
       <div className="main">
         <h1>Promodoro</h1>
         <Timer
-          currentTimeH={this.state.sessionTime}
+          currentTimeH={this.state.currentTimeH}
           currentTimeM={this.state.currentTimeM}
         />
 
-        <Play start={this.start} />
+        <Play start={this.start} initial={this.initial} />
         <IncreDecre
           sessionTime={this.state.sessionTime}
           breakTime={this.state.breakTime}
