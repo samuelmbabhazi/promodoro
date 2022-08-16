@@ -4,6 +4,8 @@ import Timer from "./components/Time";
 import IncreDecre from "./components/IncreDecre";
 import Play from "./components/play";
 
+let interval;
+
 class App extends Component {
   constructor() {
     super();
@@ -47,7 +49,7 @@ class App extends Component {
       currentTimeH: this.state.currentTimeH - 1,
       currentTimeM: 60,
     });
-    setInterval(() => {
+    interval = setInterval(() => {
       if (this.state.currentTimeH > 0) {
         if (this.state.currentTimeM > 0) {
           this.setState({
@@ -96,7 +98,14 @@ class App extends Component {
         });
       }
     }, 100);
-    clearInterval();
+  };
+  pause = () => {
+    clearInterval(interval);
+    this.setState({
+      cycle: this.state.cycle,
+      currentTimeH: this.state.currentTimeH,
+      currentTimeM: this.state.currentTimeM,
+    });
   };
 
   initial = () => {
@@ -119,7 +128,7 @@ class App extends Component {
           currentTimeM={this.state.currentTimeM}
         />
 
-        <Play start={this.start} initial={this.initial} />
+        <Play start={this.start} initial={this.initial} pause={this.pause} />
         <IncreDecre
           sessionTime={this.state.sessionTime}
           breakTime={this.state.breakTime}
