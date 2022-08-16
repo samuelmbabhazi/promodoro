@@ -5,7 +5,7 @@ import IncreDecre from "./components/IncreDecre";
 import Play from "./components/play";
 
 let interval;
-let interval2;
+
 
 class App extends Component {
   constructor() {
@@ -93,7 +93,7 @@ class App extends Component {
           });
         }
 
-        interval2=setInterval(() => {
+        setInterval(() => {
           if (this.state.currentTimeM > 0 && this.state.currentTimeH > 0) {
             this.setState({
               currentTimeM: this.state.currentTimeM - 1,
