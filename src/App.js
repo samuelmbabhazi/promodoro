@@ -5,6 +5,7 @@ import IncreDecre from "./components/IncreDecre";
 import Play from "./components/play";
 
 let interval;
+let interval2;
 
 class App extends Component {
   constructor() {
@@ -45,9 +46,10 @@ class App extends Component {
   };
 
   start = () => {
+  
     this.setState({
       currentTimeH: this.state.currentTimeH - 1,
-      currentTimeM: 60,
+      currentTimeM: 59,
     });
     interval = setInterval(() => {
       if (this.state.currentTimeH > 0) {
@@ -60,7 +62,7 @@ class App extends Component {
         if (this.state.currentTimeM === 0) {
           this.setState({
             currentTimeH: this.state.currentTimeH - 1,
-            currentTimeM: 60,
+            currentTimeM: 59,
           });
         }
       }
@@ -76,8 +78,8 @@ class App extends Component {
       ) {
         this.setState({
           cycle: "Break",
-          currentTimeH: this.state.currentTimeH + this.state.breakTime,
-          currentTimeM: "00",
+          currentTimeH: this.state.currentTimeH + this.state.breakTime - 1,
+          currentTimeM: 59,
         });
       }
       if (this.state.cycle === "Break") {
@@ -90,6 +92,20 @@ class App extends Component {
             breakTime: 5,
           });
         }
+
+        interval2=setInterval(() => {
+          if (this.state.currentTimeM > 0 && this.state.currentTimeH > 0) {
+            this.setState({
+              currentTimeM: this.state.currentTimeM - 1,
+            });
+          }
+          if (this.state.currentTimeM === 0 && this.state.currentTimeH > 0) {
+            this.setState({
+              currentTimeH: this.state.currentTimeH - 1,
+              currentTimeM: this.state.currentTimeM + 59,
+            });
+          }
+        }, 1000);
       }
 
       if (this.state.currentTimeM < 10 && this.state.currentTimeM > 0) {
@@ -97,7 +113,7 @@ class App extends Component {
           currentTimeM: "0" + this.state.currentTimeM,
         });
       }
-    }, 100);
+    }, 1000);
   };
   pause = () => {
     clearInterval(interval);
