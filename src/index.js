@@ -1,9 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import "./index.css";
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <div>
+    <App />
+    <footer>
+      <img src="logo.png" alt="" width={55} />
+    </footer>
+  </div>,
+  document.getElementById("root")
 );

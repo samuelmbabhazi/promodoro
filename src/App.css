@@ -57,6 +57,11 @@ button img {
   display: flex;
   gap: 10%;
 }
+footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+}
 @media (max-width: 900px) {
   .main {
     margin-top: 40%;
