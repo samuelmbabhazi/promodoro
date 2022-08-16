@@ -77,7 +77,7 @@ class App extends Component {
           currentTimeH: this.state.currentTimeH + this.state.breakTime,
           currentTimeM: "00",
         });
-        this.start;
+    
       }
       if (this.state.cycle === "Break") {
         if (this.state.currentTimeH === 0 && this.state.currentTimeM === 0) {
