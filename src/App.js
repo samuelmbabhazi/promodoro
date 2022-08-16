@@ -3,7 +3,6 @@ import "./App.css";
 import Timer from "./components/Time";
 import IncreDecre from "./components/IncreDecre";
 import Play from "./components/play";
-import BreakTime from "./components/breaktime";
 
 class App extends Component {
   constructor() {
@@ -72,7 +71,7 @@ class App extends Component {
           currentTimeM: "00",
         });
       }
-      if (this.state.currentTimeM < 10 && this.state.currentTimeM != 0) {
+      if (this.state.currentTimeM < 10 && this.state.currentTimeM > 0) {
         this.setState({
           currentTimeM: "0" + this.state.currentTimeM,
         });
