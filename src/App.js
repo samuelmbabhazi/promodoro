@@ -22,7 +22,7 @@ class App extends Component {
     });
   };
   decrementSession = () => {
-    if (this.state.sessionTime > 1) {
+    if (this.state.sessionTime > 0) {
       this.setState({
         sessionTime: this.state.sessionTime - 1,
         currentTimeH: this.state.currentTimeH - 1,
@@ -35,9 +35,11 @@ class App extends Component {
     });
   };
   decrementBreak = () => {
-    this.setState({
-      breakTime: this.state.breakTime - 1,
-    });
+    if (this.state.breakTime > 0) {
+      this.setState({
+        breakTime: this.state.breakTime - 1,
+      });
+    }
   };
 
   start = () => {
@@ -65,12 +67,30 @@ class App extends Component {
           currentTimeM: this.state.currentTimeM - 1,
         });
       }
-      if (this.state.currentTimeH === 0 && this.state.currentTimeM === 0) {
+      if (
+        this.state.currentTimeH === 0 &&
+        this.state.currentTimeM === 0 &&
+        this.state.cycle !== "Break"
+      ) {
         this.setState({
+          cycle: "Break",
           currentTimeH: this.state.currentTimeH + this.state.breakTime,
           currentTimeM: "00",
         });
+        this.start;
       }
+      if (this.state.cycle === "Break") {
+        if (this.state.currentTimeH === 0 && this.state.currentTimeM === 0) {
+          this.setState({
+            cycle: "Session",
+            currentTimeH: 25,
+            currentTimeM: "00",
+            sessionTime: 25,
+            breakTime: 5,
+          });
+        }
+      }
+
       if (this.state.currentTimeM < 10 && this.state.currentTimeM > 0) {
         this.setState({
           currentTimeM: "0" + this.state.currentTimeM,
@@ -79,8 +99,10 @@ class App extends Component {
     }, 100);
     clearInterval();
   };
+
   initial = () => {
     this.setState({
+      cycle: "Session",
       currentTimeH: 25,
       currentTimeM: "00",
       sessionTime: 25,
@@ -93,6 +115,7 @@ class App extends Component {
       <div className="main">
         <h1>Promodoro</h1>
         <Timer
+          cycle={this.state.cycle}
           currentTimeH={this.state.currentTimeH}
           currentTimeM={this.state.currentTimeM}
         />
