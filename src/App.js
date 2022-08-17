@@ -6,7 +6,6 @@ import Play from "./components/play";
 
 let interval;
 
-
 class App extends Component {
   constructor() {
     super();
@@ -25,7 +24,7 @@ class App extends Component {
     });
   };
   decrementSession = () => {
-    if (this.state.sessionTime > 0) {
+    if (this.state.sessionTime > 1) {
       this.setState({
         sessionTime: this.state.sessionTime - 1,
         currentTimeH: this.state.currentTimeH - 1,
@@ -38,7 +37,7 @@ class App extends Component {
     });
   };
   decrementBreak = () => {
-    if (this.state.breakTime > 0) {
+    if (this.state.breakTime > 1) {
       this.setState({
         breakTime: this.state.breakTime - 1,
       });
@@ -46,7 +45,6 @@ class App extends Component {
   };
 
   start = () => {
-  
     this.setState({
       currentTimeH: this.state.currentTimeH - 1,
       currentTimeM: 59,
@@ -80,6 +78,7 @@ class App extends Component {
           cycle: "Break",
           currentTimeH: this.state.currentTimeH + this.state.breakTime - 1,
           currentTimeM: 59,
+          
         });
       }
       if (this.state.cycle === "Break") {
@@ -92,20 +91,6 @@ class App extends Component {
             breakTime: 5,
           });
         }
-
-        setInterval(() => {
-          if (this.state.currentTimeM > 0 && this.state.currentTimeH > 0) {
-            this.setState({
-              currentTimeM: this.state.currentTimeM - 1,
-            });
-          }
-          if (this.state.currentTimeM === 0 && this.state.currentTimeH > 0) {
-            this.setState({
-              currentTimeH: this.state.currentTimeH - 1,
-              currentTimeM: this.state.currentTimeM + 59,
-            });
-          }
-        }, 1000);
       }
 
       if (this.state.currentTimeM < 10 && this.state.currentTimeM > 0) {
@@ -114,7 +99,9 @@ class App extends Component {
         });
       }
     }, 1000);
+   
   };
+
   pause = () => {
     clearInterval(interval);
     this.setState({
