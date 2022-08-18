@@ -81,6 +81,7 @@ class App extends Component {
         });
       }
       if (this.state.cycle === "Break") {
+      
         if (this.state.currentTimeH === 0 && this.state.currentTimeM === 0) {
           this.setState({
             cycle: "Session",
