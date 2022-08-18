@@ -9,14 +9,17 @@ export default class SessionTime extends Component {
   };
   render() {
     return (
-      <div>
-        <button onClick={this.handleSessionIncre}>
-          <img src="up.svg" alt="" width={10} />
-        </button>
-        <span>{this.props.sessionTime}</span>
-        <button onClick={this.handleSessiondecre}>
-          <img src="down.svg" alt="" width={10} />
-        </button>
+      <div className="session">
+        <h5>SessionLength</h5>
+        <div>
+          <button onClick={this.handleSessionIncre}>
+            <img src="up.svg" alt="" width={10} />
+          </button>
+          <span>{this.props.sessionTime}</span>
+          <button onClick={this.handleSessiondecre}>
+            <img src="down.svg" alt="" width={10} />
+          </button>
+        </div>
       </div>
     );
   }

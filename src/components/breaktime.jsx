@@ -10,6 +10,8 @@ export default class BreakTime extends Component {
   render() {
     return (
       <div>
+      <h5>BreakLength</h5>
+      <div>
         <button onClick={this.handleBreakIncre}>
           {" "}
           <img src="up.svg" alt="" width={10} />
@@ -19,6 +21,7 @@ export default class BreakTime extends Component {
           {" "}
           <img src="down.svg" alt="" width={10} />
         </button>
+      </div>
       </div>
     );
   }

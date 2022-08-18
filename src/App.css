@@ -18,9 +18,16 @@
   border-radius: 15px;
 }
 .incredecre {
-  margin-top: 20%;
+  margin-top: 10%;
   display: flex;
   gap: 90px;
+}
+h5{
+  font-weight: 50;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  margin-bottom: 5px;
+  color: gray;
 }
 button {
   cursor: pointer;
