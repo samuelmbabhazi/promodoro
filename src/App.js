@@ -78,7 +78,6 @@ class App extends Component {
           cycle: "Break",
           currentTimeH: this.state.currentTimeH + this.state.breakTime - 1,
           currentTimeM: 59,
-          
         });
       }
       if (this.state.cycle === "Break") {
@@ -99,7 +98,6 @@ class App extends Component {
         });
       }
     }, 1000);
-   
   };
 
   pause = () => {
@@ -112,6 +110,7 @@ class App extends Component {
   };
 
   initial = () => {
+    clearInterval(interval);
     this.setState({
       cycle: "Session",
       currentTimeH: 25,
