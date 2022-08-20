@@ -1,21 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import Play from "./Play";
 
-export default class Timer extends Component {
-  render() {
-    return (
-      <div
-        className="time"
-        style={{
-          border: "2px solid green",
-        }}
-      >
-        {this.props.cycle}
-        <div className="timer">
-          <span className="count-down" onClick={this.timer}>
-            {this.props.currentTimeH}:{this.props.currentTimeM}
-          </span>
-        </div>
-      </div>
-    );
-  }
+function Time({ timer ,setTimer,seconde,setSeconde}) {
+  
+  return (
+    <div>
+      {timer}:{seconde}
+      <Play timer={timer} setTimer={setTimer} seconde={seconde} setSeconde={setSeconde} />
+    </div>
+  );
 }
+
+export default Time;

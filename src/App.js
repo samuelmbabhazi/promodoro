@@ -1,148 +1,56 @@
-import React, { Component } from "react";
-import "./App.css";
-import Timer from "./components/Time";
-import IncreDecre from "./components/IncreDecre";
-import Play from "./components/play";
+import React from "react";
+import Session from "./components/Session";
+import { useState } from "react";
+import Break from "./components/Break";
+import Time from "./components/Time";
 
-let interval;
+function App() {
+  const [compteur, setCompteur] = useState(25);
+  const [compteurb, setCompteurb] = useState(5);
+  const [timer, setTimer] = useState(compteur);
+  const [seconde, setSeconde] = useState(0);
+   
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentTimeH: 25,
-      currentTimeM: "00",
-      cycle: "Session",
-      sessionTime: 25,
-      breakTime: 5,
-    };
-  }
-  incrementSession = () => {
-    this.setState({
-      sessionTime: this.state.sessionTime + 1,
-      currentTimeH: this.state.currentTimeH + 1,
-    });
+  let increment = () => {
+    setCompteur(compteur + 1);
+    setTimer(timer + 1);
   };
-  decrementSession = () => {
-    if (this.state.sessionTime > 1) {
-      this.setState({
-        sessionTime: this.state.sessionTime - 1,
-        currentTimeH: this.state.currentTimeH - 1,
-      });
+  let decrement = () => {
+    if (compteur > 1) {
+      setCompteur(compteur - 1);
+      setTimer(timer - 1)
     }
   };
-  incrementBreak = () => {
-    this.setState({
-      breakTime: this.state.breakTime + 1,
-    });
+  let incrementb = () => {
+    setCompteurb(compteurb + 1);
   };
-  decrementBreak = () => {
-    if (this.state.breakTime > 1) {
-      this.setState({
-        breakTime: this.state.breakTime - 1,
-      });
+  let decrementb = () => {
+    if (compteurb > 1) {
+      setCompteurb(compteurb - 1);
     }
   };
-
-  start = () => {
-    this.setState({
-      currentTimeH: this.state.currentTimeH - 1,
-      currentTimeM: 59,
-    });
-    interval = setInterval(() => {
-      if (this.state.currentTimeH > 0) {
-        if (this.state.currentTimeM > 0) {
-          this.setState({
-            currentTimeM: this.state.currentTimeM - 1,
-          });
-        }
-
-        if (this.state.currentTimeM === 0) {
-          this.setState({
-            currentTimeH: this.state.currentTimeH - 1,
-            currentTimeM: 59,
-          });
-        }
-      }
-      if (this.state.currentTimeH === 0 && this.state.currentTimeM > 0) {
-        this.setState({
-          currentTimeM: this.state.currentTimeM - 1,
-        });
-      }
-      if (
-        this.state.currentTimeH === 0 &&
-        this.state.currentTimeM === 0 &&
-        this.state.cycle !== "Break"
-      ) {
-        this.setState({
-          cycle: "Break",
-          currentTimeH: this.state.currentTimeH + this.state.breakTime - 1,
-          currentTimeM: 59,
-        });
-      }
-      if (this.state.cycle === "Break") {
-      
-        if (this.state.currentTimeH === 0 && this.state.currentTimeM === 0) {
-          this.setState({
-            cycle: "Session",
-            currentTimeH: 25,
-            currentTimeM: "00",
-            sessionTime: 25,
-            breakTime: 5,
-          });
-        }
-      }
-
-      if (this.state.currentTimeM < 10 && this.state.currentTimeM > 0) {
-        this.setState({
-          currentTimeM: "0" + this.state.currentTimeM,
-        });
-      }
-    }, 1000);
-  };
-
-  pause = () => {
-    clearInterval(interval);
-    this.setState({
-      cycle: this.state.cycle,
-      currentTimeH: this.state.currentTimeH,
-      currentTimeM: this.state.currentTimeM,
-    });
-  };
-
-  initial = () => {
-    clearInterval(interval);
-    this.setState({
-      cycle: "Session",
-      currentTimeH: 25,
-      currentTimeM: "00",
-      sessionTime: 25,
-      breakTime: 5,
-    });
-  };
-
-  render() {
-    return (
-      <div className="main">
-        <h1>Promodoro</h1>
-        <Timer
-          cycle={this.state.cycle}
-          currentTimeH={this.state.currentTimeH}
-          currentTimeM={this.state.currentTimeM}
+  return (
+    <div>
+      <div>
+        <Time
+          timer={timer}
+          setTimer={setTimer}
+          seconde={seconde}
+          setSeconde={setSeconde}
         />
-
-        <Play start={this.start} initial={this.initial} pause={this.pause} />
-        <IncreDecre
-          sessionTime={this.state.sessionTime}
-          breakTime={this.state.breakTime}
-          incrementSession={this.incrementSession}
-          decrementSession={this.decrementSession}
-          incrementBreak={this.incrementBreak}
-          decrementBreak={this.decrementBreak}
+        <Session
+          increment={increment}
+          decrement={decrement}
+          compteur={compteur}
+        />
+        <Break
+          incrementb={incrementb}
+          decrementb={decrementb}
+          compteurb={compteurb}
         />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
