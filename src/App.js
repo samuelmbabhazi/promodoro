@@ -9,7 +9,10 @@ function App() {
   const [compteurb, setCompteurb] = useState(5);
   const [timer, setTimer] = useState(compteur);
   const [seconde, setSeconde] = useState(0);
-   
+  const[cycle,setCycle]=useState("Session")
+  if (seconde === 0) {
+    setSeconde(seconde + "0");
+  }
 
   let increment = () => {
     setCompteur(compteur + 1);
@@ -18,7 +21,7 @@ function App() {
   let decrement = () => {
     if (compteur > 1) {
       setCompteur(compteur - 1);
-      setTimer(timer - 1)
+      setTimer(timer - 1);
     }
   };
   let incrementb = () => {
@@ -37,6 +40,9 @@ function App() {
           setTimer={setTimer}
           seconde={seconde}
           setSeconde={setSeconde}
+          compteurb={compteurb}
+          cycle={cycle}
+          setCycle={setCycle}
         />
         <Session
           increment={increment}
