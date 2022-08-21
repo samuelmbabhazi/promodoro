@@ -35,10 +35,10 @@ function Play({
     setSeconde((seconde = 0));
   };
   return (
-    <div>
-      <button onClick={rebours}>play</button>
-      <button onClick={pause}>pause</button>
-      <button onClick={reset}>reset</button>
+    <div className="play">
+      <button onClick={rebours}><img src="play.svg" alt="" /></button>
+      <button onClick={pause}><img src="pause.svg" alt="" /></button>
+      <button onClick={reset}><img src="rotate.svg" alt="" /></button>
     </div>
   );
 }

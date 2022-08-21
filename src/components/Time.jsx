@@ -11,13 +11,14 @@ function Time({
   compteurb,
 }) {
   return (
-    <div>
-     {cycle}
-    <div>
-    {timer}:{seconde}
-    </div>
-   
-      
+    <div className="time">
+      {cycle}
+      <div>
+        <h1>
+          {timer}:{seconde}
+        </h1>
+      </div>
+
       <Play
         timer={timer}
         setTimer={setTimer}

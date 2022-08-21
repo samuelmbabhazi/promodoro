@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css"
 import Session from "./components/Session";
 import { useState } from "react";
 import Break from "./components/Break";
@@ -33,9 +34,10 @@ function App() {
     }
   };
   return (
-    <div>
+    <div className="main">
       <div>
         <Time
+        
           timer={timer}
           setTimer={setTimer}
           seconde={seconde}
@@ -44,6 +46,7 @@ function App() {
           cycle={cycle}
           setCycle={setCycle}
         />
+        <div className="incredecre">
         <Session
           increment={increment}
           decrement={decrement}
@@ -54,6 +57,8 @@ function App() {
           decrementb={decrementb}
           compteurb={compteurb}
         />
+        </div>
+        
       </div>
     </div>
   );
