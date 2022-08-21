@@ -17,8 +17,15 @@ function Play({
   let player = document.getElementsByClassName("play");
   let reseter = document.getElementsByClassName("reset");
   let time = document.getElementsByClassName("time");
+  let incre = document.getElementsByClassName("incre");
+  let decre = document.getElementsByClassName("decre");
 
   const rebours = () => {
+    time[0].style.border = "6px solid black";
+    incre[0].style.display = "none";
+    incre[1].style.display = "none";
+    decre[0].style.display = "none";
+    decre[1].style.display = "none";
     pauser[0].style.display = "block";
     reseter[0].style.display = "block";
     player[0].style.display = "none";
@@ -55,6 +62,10 @@ function Play({
   };
   const reset = () => {
     clearInterval(intervale);
+    incre[0].style.display = "inline-block";
+    incre[1].style.display = "inline-block";
+    decre[0].style.display = "inline-block";
+    decre[1].style.display = "inline-block";
     time[0].style.color = "black";
     time[0].style.border = "6px solid white";
     pauser[0].style.display = "none";

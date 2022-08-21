@@ -56,6 +56,11 @@ button img {
   font-size: 20px;
   font-weight: bold;
   box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.37);
+  
+}
+small{
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .player {
