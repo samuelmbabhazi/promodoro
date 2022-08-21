@@ -31,8 +31,10 @@ function Play({
       }
       if (timer < 1) {
         time[0].style.color = "red";
+        time[0].style.border = "6px solid red";
       } else {
         time[0].style.color = "white";
+        
       }
       if (seconde =='00' && timer >= 1) {
         setTimer((timer -= 1));
