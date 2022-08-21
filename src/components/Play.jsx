@@ -24,7 +24,7 @@ function Play({
     player[0].style.display = "none";
 
     intervale = setInterval(() => {
-      if (seconde ===0 && timer >= 1) {
+      if (seconde === 0 && timer >= 1) {
         setTimer((timer -= 1));
         setSeconde((seconde = 60));
       }
@@ -33,12 +33,12 @@ function Play({
         setTimer((timer += compteurb));
         time[0].style.border = "6px solid rgb(1, 52, 1)";
       }
-     
+
       if (timer < 1) {
         time[0].style.color = "red";
         time[0].style.border = "6px solid red";
       } else {
-        time[0].style.color = "white";
+        time[0].style.color = "black";
       }
 
       if (seconde > 0 && timer >= 0) {
@@ -55,7 +55,7 @@ function Play({
   };
   const reset = () => {
     clearInterval(intervale);
-    time[0].style.color = "white";
+    time[0].style.color = "black";
     time[0].style.border = "6px solid white";
     pauser[0].style.display = "none";
     reseter[0].style.display = "none";
