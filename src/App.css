@@ -59,9 +59,13 @@ button img {
 }
 
 .player {
+  
+  border-radius: 50%;
   margin-top: 5%;
   display: flex;
   gap: 10%;
+  
+  
 }
 .pause {
   display: none;
