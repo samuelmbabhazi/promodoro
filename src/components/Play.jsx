@@ -24,26 +24,27 @@ function Play({
     player[0].style.display = "none";
 
     intervale = setInterval(() => {
+      if (seconde ===0 && timer >= 1) {
+        setTimer((timer -= 1));
+        setSeconde((seconde = 60));
+      }
       if (seconde === 0 && timer === 0 && cycle === "Session") {
         setCycle((cycle = "Break"));
-        setTimer((timer = +compteurb));
+        setTimer((timer += compteurb));
         time[0].style.border = "6px solid rgb(1, 52, 1)";
       }
+     
       if (timer < 1) {
         time[0].style.color = "red";
         time[0].style.border = "6px solid red";
       } else {
         time[0].style.color = "white";
-        
       }
-      if (seconde ==='00' && timer >= 1) {
-        setTimer((timer -= 1));
-        setSeconde((seconde = 60));
-      }
+
       if (seconde > 0 && timer >= 0) {
         setSeconde((seconde -= 1));
       }
-    }, 1000);
+    }, 100);
   };
 
   const pause = () => {

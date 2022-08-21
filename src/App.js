@@ -11,9 +11,7 @@ function App() {
   const [timer, setTimer] = useState(compteur);
   const [seconde, setSeconde] = useState(0);
   const[cycle,setCycle]=useState("Session")
-  if (seconde === 0) {
-    setSeconde(seconde + "0");
-  }
+
 
   let increment = () => {
     setCompteur(compteur + 1);
