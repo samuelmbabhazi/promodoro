@@ -1,7 +1,7 @@
 .main {
   width: 400px;
   height: 400px;
-  color:black;
+  color: white;
   margin-top: 30%;
   display: flex;
   flex-direction: column;
@@ -22,25 +22,24 @@
   display: flex;
   gap: 90px;
 }
-h5{
+h5 {
   font-weight: 50;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   margin-bottom: 5px;
   color: gray;
+  
 }
 button {
-  
   cursor: pointer;
-  background-color:transparent;
+  background-color: transparent;
   border: none;
   width: 30;
-  color: white;
   
 }
 button img {
   width: 15px;
-  
+  filter: grayscale(1) invert(1);
 }
 .time {
   border-radius: 50%;
@@ -49,7 +48,7 @@ button img {
   margin-right: auto;
   width: 200px;
   height: 200px;
-  border: 5px solid black;
+  border: 6px solid white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,15 +58,21 @@ button img {
   box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.37);
 }
 
-.play {
+.player {
   margin-top: 5%;
   display: flex;
   gap: 10%;
 }
+.pause {
+  display: none;
+}
+.reset {
+  display: none;
+}
 footer {
   display: flex;
   justify-content: center;
-  margin-top: 15%;
+  margin-top: 10%;
 }
 @media (max-width: 900px) {
   .main {

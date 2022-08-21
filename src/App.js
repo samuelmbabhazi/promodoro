@@ -43,6 +43,9 @@ function App() {
           seconde={seconde}
           setSeconde={setSeconde}
           compteurb={compteurb}
+          compteur={compteur}
+          setCompteur={setCompteur}
+          setCompteurb={setCompteurb}
           cycle={cycle}
           setCycle={setCycle}
         />

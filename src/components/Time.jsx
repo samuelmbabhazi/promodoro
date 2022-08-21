@@ -9,6 +9,9 @@ function Time({
   seconde,
   setSeconde,
   compteurb,
+  compteur,
+  setCompteur,
+  setCompteurb,
 }) {
   return (
     <div className="time">
@@ -27,6 +30,9 @@ function Time({
         compteurb={compteurb}
         cycle={cycle}
         setCycle={setCycle}
+        compteur={compteur}
+        setCompteur={setCompteur}
+        setCompteurb={setCompteurb}
       />
     </div>
   );
