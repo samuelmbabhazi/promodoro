@@ -24,7 +24,7 @@ function Play({
     player[0].style.display = "none";
 
     intervale = setInterval(() => {
-      if (seconde == 0 && timer === 0 && cycle === "Session") {
+      if (seconde === 0 && timer === 0 && cycle === "Session") {
         setCycle((cycle = "Break"));
         setTimer((timer = +compteurb));
         time[0].style.border = "6px solid rgb(1, 52, 1)";
@@ -36,7 +36,7 @@ function Play({
         time[0].style.color = "white";
         
       }
-      if (seconde =='00' && timer >= 1) {
+      if (seconde ==='00' && timer >= 1) {
         setTimer((timer -= 1));
         setSeconde((seconde = 60));
       }
