@@ -13,11 +13,12 @@ function Time({
   setCompteur,
   setCompteurb,
 }) {
+
   return (
-    <div className="time">
+    <div className="time" id="timer-label">
       {cycle}
       <div>
-        <h1>
+        <h1 id="time-left">
           {timer}:{seconde}
         </h1>
       </div>

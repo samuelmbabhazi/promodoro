@@ -1,14 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
+root.render(
   <div>
     <App />
     <footer>
       <img src="logo.png" alt="" width={55} />
     </footer>
-  </div>,
-  document.getElementById("root")
+  </div>
 );

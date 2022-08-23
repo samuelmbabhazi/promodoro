@@ -1,6 +1,7 @@
 import React from "react";
 
 let intervale;
+
 function Play({
   cycle,
   setCycle,
@@ -50,6 +51,9 @@ function Play({
 
       if (seconde > 0 && timer >= 0) {
         setSeconde((seconde -= 1));
+        if (seconde < 10) {
+          setSeconde("0" + seconde);
+        }
       }
     }, 100);
   };
@@ -81,14 +85,14 @@ function Play({
 
   return (
     <div className="player">
-      <button className="play" onClick={rebours}>
+      <button className="play" onClick={rebours} id="start_stop">
         <img src="play.svg" alt="" />
       </button>
       <button className="pause" onClick={pause}>
         <img src="pause.svg" alt="" />
       </button>
 
-      <button className="reset" onClick={reset}>
+      <button className="reset" onClick={reset} id="reset">
         <img src="rotate.svg" alt="" />
       </button>
     </div>

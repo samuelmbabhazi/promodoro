@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css"
+import "./App.css";
 import Session from "./components/Session";
 import { useState } from "react";
 import Break from "./components/Break";
@@ -10,8 +10,7 @@ function App() {
   const [compteurb, setCompteurb] = useState(5);
   const [timer, setTimer] = useState(compteur);
   const [seconde, setSeconde] = useState(0);
-  const[cycle,setCycle]=useState("Session")
-
+  const [cycle, setCycle] = useState("Session");
 
   let increment = () => {
     setCompteur(compteur + 1);
@@ -31,11 +30,11 @@ function App() {
       setCompteurb(compteurb - 1);
     }
   };
+
   return (
     <div className="main">
       <div>
         <Time
-        
           timer={timer}
           setTimer={setTimer}
           seconde={seconde}
@@ -48,18 +47,17 @@ function App() {
           setCycle={setCycle}
         />
         <div className="incredecre">
-        <Session
-          increment={increment}
-          decrement={decrement}
-          compteur={compteur}
-        />
-        <Break
-          incrementb={incrementb}
-          decrementb={decrementb}
-          compteurb={compteurb}
-        />
+          <Session
+            increment={increment}
+            decrement={decrement}
+            compteur={compteur}
+          />
+          <Break
+            incrementb={incrementb}
+            decrementb={decrementb}
+            compteurb={compteurb}
+          />
         </div>
-        
       </div>
     </div>
   );
