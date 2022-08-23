@@ -5,11 +5,12 @@ import { useState } from "react";
 import Break from "./components/Break";
 import Time from "./components/Time";
 
+
 function App() {
   const [compteur, setCompteur] = useState(25);
   const [compteurb, setCompteurb] = useState(5);
   const [timer, setTimer] = useState(compteur);
-  const [seconde, setSeconde] = useState(0);
+  const [seconde, setSeconde] = useState("00");
   const [cycle, setCycle] = useState("Session");
 
   let increment = () => {
@@ -30,7 +31,6 @@ function App() {
       setCompteurb(compteurb - 1);
     }
   };
-
   return (
     <div className="main">
       <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 let intervale;
 
@@ -20,6 +20,7 @@ function Play({
   let time = document.getElementsByClassName("time");
   let incre = document.getElementsByClassName("incre");
   let decre = document.getElementsByClassName("decre");
+  const [audio] = useState(new Audio("song.mp3"));
 
   const rebours = () => {
     time[0].style.border = "6px solid black";
@@ -32,16 +33,25 @@ function Play({
     player[0].style.display = "none";
 
     intervale = setInterval(() => {
-      if (seconde === 0 && timer >= 1) {
+      if (seconde === "00" || (seconde === 0 && timer >= 1)) {
         setTimer((timer -= 1));
         setSeconde((seconde = 60));
       }
       if (seconde === 0 && timer === 0 && cycle === "Session") {
+        audio.pause();
         setCycle((cycle = "Break"));
         setTimer((timer += compteurb));
         time[0].style.border = "6px solid rgb(1, 52, 1)";
       }
-
+      if (seconde <= 5 && seconde > 0 && timer === 0 && cycle === "Session") {
+        audio.play();
+      }
+      if (seconde <= 5 && seconde > 0 && timer === 0 && cycle === "Break") {
+        audio.play();
+      }
+      if (seconde === 0 && timer === 0 && cycle === "Break") {
+        audio.pause();
+      }
       if (timer < 1) {
         time[0].style.color = "red";
         time[0].style.border = "6px solid red";
@@ -55,7 +65,7 @@ function Play({
           setSeconde("0" + seconde);
         }
       }
-    }, 100);
+    }, 1000);
   };
 
   const pause = () => {
@@ -78,7 +88,7 @@ function Play({
 
     setCycle((cycle = "Session"));
     setTimer((timer = 25));
-    setSeconde((seconde = 0));
+    setSeconde((seconde = "00"));
     setCompteur((compteur = 25));
     setCompteurb((compteurb = 5));
   };
