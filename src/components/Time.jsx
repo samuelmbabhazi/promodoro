@@ -15,6 +15,8 @@ function Time({
 }) {
 
   return (
+    <div>
+    <div className="circular"></div>
     <div className="time" id="timer-label">
       {cycle}
       <div>
@@ -36,6 +38,8 @@ function Time({
         setCompteurb={setCompteurb}
       />
     </div>
+    </div>
+
   );
 }
 

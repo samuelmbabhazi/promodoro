@@ -28,20 +28,20 @@ h5 {
   margin: 0;
   margin-bottom: 5px;
   color: gray;
-  
 }
 button {
   cursor: pointer;
   background-color: transparent;
   border: none;
   width: 30;
-  
 }
 button img {
   width: 15px;
-  
 }
 .time {
+  position: absolute;
+left: 95px;
+  bottom: 140px;
   border-radius: 50%;
   margin-top: 20%;
   margin-left: auto;
@@ -56,21 +56,44 @@ button img {
   font-size: 20px;
   font-weight: bold;
   box-shadow: 0 8px 32px 0 rgb(0, 0, 0, 0.37);
-  
 }
-small{
+.circular {
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 200px;
+  border: 5px solid green;
+  border-radius: 50%;
+  border-top: #000000;
+  animation: circular-loader 2s linear infinite;
+  animation-play-state: paused;
+}
+@keyframes circular-loader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.enpause{
+  animation-play-state: paused;
+}
+.encours{
+  animation-play-state: running;
+}
+
+small {
   font-size: 22px;
   font-weight: 400;
 }
 
 .player {
-  
   border-radius: 50%;
   margin-top: 5%;
   display: flex;
   gap: 10%;
-  
-  
 }
 .pause {
   display: none;
@@ -88,4 +111,10 @@ footer {
     margin-top: 40%;
     width: 80vw;
   }
+  .time {
+    position: absolute;
+  left: 50px;
+    bottom: 140px
+  }
+ 
 }

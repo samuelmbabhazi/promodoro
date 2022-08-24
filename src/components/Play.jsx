@@ -18,12 +18,13 @@ function Play({
   let player = document.getElementsByClassName("play");
   let reseter = document.getElementsByClassName("reset");
   let time = document.getElementsByClassName("time");
+  let circular = document.getElementsByClassName("circular");
   let incre = document.getElementsByClassName("incre");
   let decre = document.getElementsByClassName("decre");
   const [audio] = useState(new Audio("song.mp3"));
 
   const rebours = () => {
-    time[0].style.border = "6px solid black";
+    
     incre[0].style.display = "none";
     incre[1].style.display = "none";
     decre[0].style.display = "none";
@@ -31,6 +32,8 @@ function Play({
     pauser[0].style.display = "block";
     reseter[0].style.display = "block";
     player[0].style.display = "none";
+    circular[0].classList.add("encours");
+    
 
     intervale = setInterval(() => {
       if (seconde === "00" || (seconde === 0 && timer >= 1)) {
@@ -54,7 +57,7 @@ function Play({
       }
       if (timer < 1) {
         time[0].style.color = "red";
-        time[0].style.border = "6px solid red";
+      
       } else {
         time[0].style.color = "black";
       }
@@ -73,6 +76,7 @@ function Play({
     pauser[0].style.display = "none";
     reseter[0].style.display = "block";
     player[0].style.display = "block";
+    circular[0].classList.remove("encours");
   };
   const reset = () => {
     clearInterval(intervale);
@@ -85,6 +89,7 @@ function Play({
     pauser[0].style.display = "none";
     reseter[0].style.display = "none";
     player[0].style.display = "block";
+    circular[0].classList.remove("encours");
 
     setCycle((cycle = "Session"));
     setTimer((timer = 25));
