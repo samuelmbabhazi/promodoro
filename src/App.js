@@ -33,6 +33,7 @@ function App() {
   };
   return (
     <div className="main">
+  
       <div>
         <Time
           timer={timer}
